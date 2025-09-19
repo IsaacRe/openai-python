@@ -20,7 +20,7 @@ def get_openai_id(prefix: str) -> str:
     return f"{prefix}_abc123"
 
 
-def list_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool) -> "List[Any]":
+def list_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "List[Any]":
     if not len(args) == 1:
         import pdb; pdb.set_trace()
     stride, output = generate(args[0], seed, stride_dict, build)
@@ -32,7 +32,7 @@ def list_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, 
     return [output]
 
 
-def dict_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool) -> "Dict[Any, Any]":
+def dict_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "Dict[Any, Any]":
     if not len(args) == 2:
         import pdb; pdb.set_trace()
     key_stride, key_out = generate(args[0], seed, stride_dict, build)
@@ -45,14 +45,14 @@ def dict_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, 
     return {key_out: val_out}
 
 
-def _union_generator_build(type_name: str, args: type, seed: int, stride_dict: Optional[dict[str, int]]) -> "Any":
+def _union_generator_build(type_name: str, args: type, seed: int, stride_dict: Optional[dict[str, int]], key_in_data: str = "", data_cls: str = "") -> "Any":
     cum_stride = 0
     outputs = []
     for i in range(len(args)):
         # from openai.types.responses.easy_input_message_param import EasyInputMessageParam
         # if args[i] == EasyInputMessageParam:
         #     import pdb; pdb.set_trace()
-        stride, output = generate(args[i], seed - cum_stride, stride_dict, True)
+        stride, output = generate(args[i], seed - cum_stride, stride_dict, True, key_in_data, data_cls)
         cum_stride += stride
         outputs.append((cum_stride, output))
     
@@ -64,7 +64,7 @@ def _union_generator_build(type_name: str, args: type, seed: int, stride_dict: O
     return output
 
 
-def _union_generator_nobuild(args: type, seed: int, stride_dict: Optional[dict[str, int]]) -> "Any":
+def _union_generator_nobuild(args: type, seed: int, stride_dict: Optional[dict[str, int]], key_in_data: str = "", data_cls: str = "") -> "Any":
     cum_stride = 0
     for i in range(len(args)):
         type_name = repr(args[i])
@@ -74,21 +74,21 @@ def _union_generator_nobuild(args: type, seed: int, stride_dict: Optional[dict[s
         if seed < cum_stride + stride:
             break
         cum_stride += stride
-    _, output = generate(args[i], seed - cum_stride, stride_dict, False)
+    _, output = generate(args[i], seed - cum_stride, stride_dict, False, key_in_data, data_cls)
     return output
 
 
-def union_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool) -> "Any":
+def union_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "Any":
     if build:
-        return _union_generator_build(type_name, args, seed, stride_dict)
+        return _union_generator_build(type_name, args, seed, stride_dict, key_in_data, data_cls)
     else:
-        return _union_generator_nobuild(args, seed, stride_dict)
+        return _union_generator_nobuild(args, seed, stride_dict, key_in_data, data_cls)
 
 
-def annotated_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool) -> "Any":
+def annotated_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "Any":
     if not len(args) == 1:
         import pdb; pdb.set_trace()
-    stride, output = generate(args[0], seed, stride_dict, build)
+    stride, output = generate(args[0], seed, stride_dict, build, key_in_data, data_cls)
 
     # if building stride_dict, update
     if build:
@@ -98,7 +98,7 @@ def annotated_generator(type_name: str, args: type, metadata: tuple[Any], seed: 
     return output
 
 
-def literal_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool) -> "Any":
+def literal_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "Any":
     output = args[seed % len(args)]
     
     if build:
@@ -107,10 +107,10 @@ def literal_generator(type_name: str, args: type, metadata: tuple[Any], seed: in
     return output
 
 
-def required_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_type: str = "") -> "Any":
+def required_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "Any":
     if not len(args) == 1:
         import pdb; pdb.set_trace()
-    stride, output = generate(args[0], seed, stride_dict, build, key_in_data, data_type)
+    stride, output = generate(args[0], seed, stride_dict, build, key_in_data, data_cls)
 
     # if building stride_dict, update
     if build:
@@ -140,94 +140,13 @@ generator_map = {
 def generate_basemodel(cls: ModelMetaclass, seed: int, stride_dict: Optional[dict[str, int]], build: bool) -> str:
     max_stride = 0
     cls_kwargs = {}
-    if (
-        (obj_type := cls.__pydantic_fields__.get("type")) and
-        (ann := getattr(obj_type, "annotation")) and
-        (type_literals := getattr(ann, "__args__", [])) and
-        len(type_literals) == 1
-    ):
-        data_type = type_literals[0]
-    elif (
-        (obj_type := cls.__pydantic_fields__.get("data_type")) and
-        (not getattr(obj_type, "annotation"))
-    ):
-        import pdb; pdb.set_trace()
-    else:
-        data_type = ""
-    if "id" in cls.__pydantic_fields__.keys() and not data_type:
-        from openai.types.responses.response_input_param import ItemReference
-        if cls.__name__ == "ItemReference":
-            import pdb; pdb.set_trace()
-        print(f"class {cls} has id but no data type")
-    for key, field_info in cls.__pydantic_fields__.items():
+    type_dict = cls.__pydantic_fields__
+    has_type = "type" in type_dict
+    for key, field_info in type_dict.items():
         if not hasattr(field_info, "annotation"):
             import pdb; pdb.set_trace()
         typ = field_info.annotation
-        stride, output = generate(typ, seed, stride_dict, build, key, data_type)
-
-        # # required = field_info.required
-        # type_name = repr(typ)
-        # if isinstance(typ, _GenericAlias):
-        #     if not (hasattr(typ, "__origin__") and typ.__origin__ in generator_map):
-        #         pdb.set_trace()
-        #     if not hasattr(typ, "__args__"):
-        #         pdb.set_trace()
-        #     output = generator_map[typ.__origin__](type_name, typ.__args__, (), seed, stride_dict, build)
-        #     if type_name not in stride_dict:
-        #         pdb.set_trace()
-        #     stride = stride_dict[type_name]
-        # # actually this is probably not necessary
-        # # elif isinstance(typ, _AnnotatedAlias):
-        # #     if not (hasattr(typ, "__origin__") and typ.__origin__ in generator_map):
-        # #         pdb.set_trace()
-        # #     if not hasattr(typ, "__args__"):
-        # #         pdb.set_trace()
-        # #     if not hasattr(typ, "__metadata__"):
-        # #         pdb.set_trace()
-        # #     type_name = repr(typ)
-        # #     return generator_map[typ.__origin__](type_name, typ.__args__, typ.__metadata__, seed, stride_dict, build)
-        # elif issubclass(typ, BaseModel):
-        #     output = generate_basemodel(typ, seed, stride_dict, build)
-        #     if type_name not in stride_dict:
-        #         pdb.set_trace()
-        #     stride = stride_dict[type_name]
-        # elif is_td(typ):
-        #     output = generate_typeddict(typ, seed, stride_dict, build)
-        #     if type_name not in stride_dict:
-        #         pdb.set_trace()
-        #     stride = stride_dict[type_name]
-        # # handle basic python types
-        # elif typ == str:
-        #     if key == "id":
-        #         # need to use openai id format
-        #         if (
-        #             (obj_type := cls.__pydantic_fields__.get("type")) and
-        #             (type_literals := getattr(obj_type.annotation, "__args__", [])) and
-        #             len(type_literals) == 1
-        #         ):
-        #             id_prefix = ID_PREFIX_MAP.get(type_literals[0], "")
-        #             if not id_prefix:
-        #                 print(f"MISSING ID prefix for type `{type_literals[0]}` -- update ID_PREFIX_MAP once the call to OpenAI fails")
-        #         else:
-        #             pdb.set_trace()
-
-        #         id_prefix = None
-        #         output = get_openai_id(id_prefix)
-        #     else:
-        #         output = STR_VAL
-        #     stride = 1
-        # elif typ == int:
-        #     output = INT_VAL
-        #     stride = 1
-        # elif typ == float:
-        #     output = FLOAT_VAL
-        #     stride = 1
-        # elif typ == bool:
-        #     output = seed % 2 == 0
-        #     stride = 2
-        # else:
-        #     pdb.set_trace()
-
+        stride, output = generate(typ, seed, stride_dict, build, key, cls if has_type else "")
         cls_kwargs[key] = output
 
         if build:
@@ -241,86 +160,9 @@ def generate_typeddict(cls: _TypedDictMeta, seed: int, stride_dict: Optional[dic
     max_stride = 0
     cls_kwargs = {}
     type_dict = get_type_hints(cls)
-    if (
-        (obj_type := type_dict.get("type")) and
-        (type_literals := getattr(obj_type, "__args__", [])) and
-        len(type_literals) == 1
-    ):
-        data_type = type_literals[0]
-    else:
-        data_type = ""
-    if "id" in type_dict and not data_type:
-        from openai.types.responses.response_input_param import ItemReference
-        if cls.__name__ == "ItemReference":
-            import pdb; pdb.set_trace()
-        print(f"class {cls} has id but no data type")
+    has_type = "type" in type_dict
     for key, typ in type_dict.items():
-        stride, output = generate(typ, seed, stride_dict, build, key, data_type)
-
-        # # typ = field_info.annotation
-        # # required = field_info.required
-        # type_name = repr(typ)
-        # if isinstance(typ, _GenericAlias):
-        #     if not (hasattr(typ, "__origin__") and typ.__origin__ in generator_map):
-        #         pdb.set_trace()
-        #     if not hasattr(typ, "__args__"):
-        #         pdb.set_trace()
-        #     output = generator_map[typ.__origin__](type_name, typ.__args__, (), seed, stride_dict, build)
-        #     if type_name not in stride_dict:
-        #         pdb.set_trace()
-        #     stride = stride_dict[type_name]
-        # # actually this is probably not necessary
-        # # elif isinstance(typ, _AnnotatedAlias):
-        # #     if not (hasattr(typ, "__origin__") and typ.__origin__ in generator_map):
-        # #         pdb.set_trace()
-        # #     if not hasattr(typ, "__args__"):
-        # #         pdb.set_trace()
-        # #     if not hasattr(typ, "__metadata__"):
-        # #         pdb.set_trace()
-        # #     type_name = repr(typ)
-        # #     return generator_map[typ.__origin__](type_name, typ.__args__, typ.__metadata__, seed, stride_dict, build)
-        # elif issubclass(typ, BaseModel):
-        #     output = generate_basemodel(typ, seed, stride_dict, build)
-        #     if type_name not in stride_dict:
-        #         pdb.set_trace()
-        #     stride = stride_dict[type_name]
-        # elif is_td(typ):
-        #     output = generate_typeddict(typ, seed, stride_dict, build)
-        #     if type_name not in stride_dict:
-        #         pdb.set_trace()
-        #     stride = stride_dict[type_name]
-        # # handle basic python types
-        # elif typ == str:
-        #     if key == "id":
-        #         # need to use openai id format
-        #         if (
-        #             (obj_type := type_dict.get("type")) and
-        #             (type_literals := getattr(obj_type.annotation, "__args__", [])) and
-        #             len(type_literals) == 1
-        #         ):
-        #             id_prefix = ID_PREFIX_MAP.get(type_literals[0], "")
-        #             if not id_prefix:
-        #                 print(f"MISSING ID prefix for type `{type_literals[0]}` -- update ID_PREFIX_MAP once the call to OpenAI fails")
-        #         else:
-        #             pdb.set_trace()
-
-        #         id_prefix = None
-        #         output = get_openai_id(id_prefix)
-        #     else:
-        #         output = STR_VAL
-        #     stride = 1
-        # elif typ == int:
-        #     output = INT_VAL
-        #     stride = 1
-        # elif typ == float:
-        #     output = FLOAT_VAL
-        #     stride = 1
-        # elif typ == bool:
-        #     output = seed % 2 == 0
-        #     stride = 2
-        # else:
-        #     pdb.set_trace()
-
+        stride, output = generate(typ, seed, stride_dict, build, key, cls if has_type else "")
         cls_kwargs[key] = output
 
         if build:
@@ -330,7 +172,7 @@ def generate_typeddict(cls: _TypedDictMeta, seed: int, stride_dict: Optional[dic
     return cls(**cls_kwargs)
 
 
-def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_type: str = "") -> "tuple[int, Any]":
+def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "tuple[int, Any]":
     # if key_in_data == "input":
     #     import pdb; pdb.set_trace()
     type_name = repr(typ)
@@ -341,16 +183,13 @@ def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build:
             import pdb; pdb.set_trace()
         if not hasattr(typ, "__metadata__"):
             import pdb; pdb.set_trace()
-        stride, output = generate(typ.__args__[0], seed, stride_dict, build)
+        stride, output = generate(typ.__args__[0], seed, stride_dict, build, key_in_data, data_cls)
     elif isinstance(typ, _GenericAlias):
         if not (hasattr(typ, "__origin__") and typ.__origin__ in generator_map):
             import pdb; pdb.set_trace()
         if not hasattr(typ, "__args__"):
             import pdb; pdb.set_trace()
-        add_kwargs = {}
-        if typ.__origin__ == Required:
-            add_kwargs = {"key_in_data": key_in_data, "data_type": data_type}
-        output = generator_map[typ.__origin__](type_name, typ.__args__, (), seed, stride_dict, build, **add_kwargs)
+        output = generator_map[typ.__origin__](type_name, typ.__args__, (), seed, stride_dict, build, key_in_data, data_cls)
         if type_name not in stride_dict:
             import pdb; pdb.set_trace()
         stride = stride_dict[type_name]
@@ -368,10 +207,10 @@ def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build:
     elif typ == str:
         if key_in_data == "id":
             # need to use openai id format
-            if data_type:
-                id_prefix = ID_PREFIX_MAP.get(data_type, "")
+            if data_cls:
+                id_prefix = ID_PREFIX_MAP.get(data_cls, "")
                 if not id_prefix:
-                    print(f"MISSING ID prefix for type `{data_type}` -- update ID_PREFIX_MAP once the call to OpenAI fails")
+                    print(f"MISSING ID prefix for type `{data_cls}` -- update ID_PREFIX_MAP once the call to OpenAI fails")
             id_prefix = ""
             output = get_openai_id(id_prefix)
         else:
@@ -415,7 +254,7 @@ def main():
     from openai.types.responses.response_create_params import ResponseCreateParamsBase
     from openai.types.responses.response_code_interpreter_tool_call import ResponseCodeInterpreterToolCall
     from openai.types.responses.response_code_interpreter_tool_call_param import ResponseCodeInterpreterToolCallParam
-    for i in range(100):
+    for i in range(10):
         generate(ResponseCodeInterpreterToolCallParam, i, {}, True)
         generate(ResponseCodeInterpreterToolCall, i, {}, True)
         generate_typeddict(ResponseCreateParamsBase, i, {}, True)
