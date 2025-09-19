@@ -1,6 +1,8 @@
 from typing import List, Union, Sequence, Iterable, Optional, Dict, Any, _GenericAlias, _TypedDictMeta, get_type_hints,  _AnnotatedAlias
 from typing_extensions import Literal, Annotated, TypeAlias, Required, TypedDict
 from collections import abc
+from tqdm.auto import tqdm
+import os
 
 from pydantic._internal._model_construction import ModelMetaclass
 from openai._models import BaseModel
@@ -8,6 +10,8 @@ from openai._utils._transform import PropertyInfo
 import openai
 
 from openai_request import create_response
+
+SAVE_PAYLOAD_DIR = "save-payloads/responses/create"
 
 INT_VAL = 16
 FLOAT_VAL = 1.0
@@ -292,17 +296,17 @@ def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build:
     return stride, output
 
 
-def main():
+def gen_response_create_params():
     from openai.types.responses.response_create_params import ResponseCreateParams
-    # from openai.types.responses.response_code_interpreter_tool_call import ResponseCodeInterpreterToolCall
-    # from openai.types.responses.response_code_interpreter_tool_call_param import ResponseCodeInterpreterToolCallParam
-    for i in range(2):
-        # generate(ResponseCodeInterpreterToolCallParam, i, {}, True)
-        # generate(ResponseCodeInterpreterToolCall, i, {}, True)
+    num_tests, response_create_params = generate(ResponseCreateParams, 0, {}, True)
+    for i in tqdm(range(num_tests)):
+        save_path = os.path.join(SAVE_PAYLOAD_DIR, f"{i}.json")
+        if os.path.exists(save_path):
+            continue
         _, response_create_params = generate(ResponseCreateParams, i, {}, True)
-        out = create_response(response_create_params)
+        out = create_response(save_path, response_create_params)
         print(out)
 
 
 if __name__ == "__main__":
-    main()
+    gen_response_create_params()

@@ -979,6 +979,13 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
 
             response = None
             try:
+                ### save request
+
+                from openai_request import save_request
+                save_request(request)
+
+                ###
+
                 response = self._client.send(
                     request,
                     stream=stream or self._should_stream_response_body(request=request),

@@ -3,8 +3,25 @@ from openai.resources.responses import Responses
 from openai.types.responses.response_create_params import ResponseCreateParams
 from openai._types import NOT_GIVEN
 import json
+import httpx
+import os
+
+SAVE_FILEPATH = "tmp.json"
+
 
 cli = Responses(OpenAI())
+
+
+def save_request(request: httpx.Request):
+    save_dir = os.path.dirname(SAVE_FILEPATH)
+    os.makedirs(save_dir, exist_ok=True)
+    with open(SAVE_FILEPATH, "w+") as f:
+        payload = json.loads(request.content.decode("utf-8"))
+        json.dump(payload, f, indent=2)
+    # save headers
+    headers_filename = os.path.join(save_dir, "headers.json")
+    with open(headers_filename, "w+") as f:
+        json.dump(dict(request.headers), f, indent=2)
 
 
 def get_item(obj, item):
@@ -47,7 +64,9 @@ def validate_response_create_args(response_create_args: ResponseCreateParams):
     return response_create_args
 
 
-def create_response(response_create_args: ResponseCreateParams):
+def create_response(save_path: str, response_create_args: ResponseCreateParams):
+    global SAVE_FILEPATH
+    SAVE_FILEPATH = save_path
     try:
         return cli.create(**validate_response_create_args(response_create_args))
     except NotFoundError as e:
