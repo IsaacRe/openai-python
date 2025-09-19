@@ -5,19 +5,63 @@ from collections import abc
 from pydantic._internal._model_construction import ModelMetaclass
 from openai._models import BaseModel
 from openai._utils._transform import PropertyInfo
+import openai
 
-INT_VAL = 1
+from openai_request import create_response
+
+INT_VAL = 16
 FLOAT_VAL = 1.0
 STR_VAL = "string"
 
 ID_PREFIX_MAP = {
+    openai.types.responses.response_input_item_param.FunctionCallOutput: 'fc',
+    openai.types.responses.response_input_item.FunctionCallOutput: 'fc',
+    openai.types.responses.response_input_param.FunctionCallOutput: 'fc',
+    openai.types.responses.response_function_tool_call_output_item.ResponseFunctionToolCallOutputItem: 'fc',
+    openai.types.responses.response_input_item_param.McpApprovalResponse: 'mcpa',
+    openai.types.responses.response_input_item.McpApprovalResponse: 'mcpa',
+    openai.types.responses.response_input_param.McpApprovalResponse: 'mcpa',
+    openai.types.responses.response_item.McpApprovalResponse: 'mcpa',
+    openai.types.responses.response_custom_tool_call_output_param.ResponseCustomToolCallOutputParam: 'ctco',
+    openai.types.responses.response_custom_tool_call_output.ResponseCustomToolCallOutput: 'ctco',
+    openai.types.responses.response_conversation_param.ResponseConversationParam: 'conv',
+    openai.types.responses.response.Conversation: 'conv',
+    openai.types.responses.response_prompt_param.ResponsePromptParam: 'pmpt',
+    openai.types.responses.response_prompt.ResponsePrompt: 'pmpt',
+    openai.types.responses.response_computer_tool_call_output_item.ResponseComputerToolCallOutputItem: 'cuo',
+    openai.types.responses.response_input_item_param.ComputerCallOutput: 'cuo',
+    openai.types.responses.response_input_item.ComputerCallOutput: 'cuo',
+    openai.types.responses.response_input_param.ComputerCallOutput: 'cuo',
 }
+
+TYPELESS_ID_PREFIXES = {
+    openai.types.responses.response_conversation_param.ResponseConversationParam: 'conv',
+    openai.types.responses.response.Conversation: 'conv',
+    openai.types.responses.response_prompt_param.ResponsePromptParam: 'pmpt',
+    openai.types.responses.response_prompt.ResponsePrompt: 'pmpt',
+}
+
 
 def is_td(cls):
     return type(cls).__name__ == '_TypedDictMeta'
 
 def get_openai_id(prefix: str) -> str:
     return f"{prefix}_abc123"
+
+
+def schema_generator():
+    # used for input schema definitions
+    return {
+        "type": "object",
+        "properties": {
+            "query": {
+                "type": "string",
+                "description": "The search query to perform.", # describes the paramteres to OpenAI
+            },
+        },
+        "required": ["query"],
+        "additionalProperties": False,
+    }
 
 
 def list_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "List[Any]":
@@ -35,6 +79,12 @@ def list_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, 
 def dict_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "Dict[Any, Any]":
     if not len(args) == 2:
         import pdb; pdb.set_trace()
+
+    if args[1] == object:
+        # use Dict[str, object] (== object) for input schema definitions
+        stride_dict[type_name] = 1
+        return schema_generator()
+
     key_stride, key_out = generate(args[0], seed, stride_dict, build)
     val_stride, val_out = generate(args[1], seed, stride_dict, build)
 
@@ -141,7 +191,7 @@ def generate_basemodel(cls: ModelMetaclass, seed: int, stride_dict: Optional[dic
     max_stride = 0
     cls_kwargs = {}
     type_dict = cls.__pydantic_fields__
-    has_type = "type" in type_dict
+    has_type = "type" in type_dict or cls in TYPELESS_ID_PREFIXES
     for key, field_info in type_dict.items():
         if not hasattr(field_info, "annotation"):
             import pdb; pdb.set_trace()
@@ -160,7 +210,7 @@ def generate_typeddict(cls: _TypedDictMeta, seed: int, stride_dict: Optional[dic
     max_stride = 0
     cls_kwargs = {}
     type_dict = get_type_hints(cls)
-    has_type = "type" in type_dict
+    has_type = "type" in type_dict or cls in TYPELESS_ID_PREFIXES
     for key, typ in type_dict.items():
         stride, output = generate(typ, seed, stride_dict, build, key, cls if has_type else "")
         cls_kwargs[key] = output
@@ -211,7 +261,8 @@ def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build:
                 id_prefix = ID_PREFIX_MAP.get(data_cls, "")
                 if not id_prefix:
                     print(f"MISSING ID prefix for type `{data_cls}` -- update ID_PREFIX_MAP once the call to OpenAI fails")
-            id_prefix = ""
+            else:
+                id_prefix = ""
             output = get_openai_id(id_prefix)
         else:
             output = STR_VAL
@@ -230,16 +281,7 @@ def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build:
         stride = 1
     elif typ is object:
         # used for input schema definitions
-        output = {
-            "type": "object",
-            "properties": {
-                "query": {
-                    "type": "string",
-                    "description": "The search query to perform.", # describes the paramteres to OpenAI
-                },
-            },
-            "required": ["query"],
-        }
+        output = schema_generator()
         stride = 1
     else:
         import pdb; pdb.set_trace()
@@ -251,13 +293,15 @@ def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build:
 
 
 def main():
-    from openai.types.responses.response_create_params import ResponseCreateParamsBase
-    from openai.types.responses.response_code_interpreter_tool_call import ResponseCodeInterpreterToolCall
-    from openai.types.responses.response_code_interpreter_tool_call_param import ResponseCodeInterpreterToolCallParam
-    for i in range(10):
-        generate(ResponseCodeInterpreterToolCallParam, i, {}, True)
-        generate(ResponseCodeInterpreterToolCall, i, {}, True)
-        generate_typeddict(ResponseCreateParamsBase, i, {}, True)
+    from openai.types.responses.response_create_params import ResponseCreateParams
+    # from openai.types.responses.response_code_interpreter_tool_call import ResponseCodeInterpreterToolCall
+    # from openai.types.responses.response_code_interpreter_tool_call_param import ResponseCodeInterpreterToolCallParam
+    for i in range(2):
+        # generate(ResponseCodeInterpreterToolCallParam, i, {}, True)
+        # generate(ResponseCodeInterpreterToolCall, i, {}, True)
+        _, response_create_params = generate(ResponseCreateParams, i, {}, True)
+        out = create_response(response_create_params)
+        print(out)
 
 
 if __name__ == "__main__":
