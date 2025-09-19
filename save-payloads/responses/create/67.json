@@ -1,0 +1,33 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "code": null,
+      "container_id": "string",
+      "outputs": null,
+      "status": "interpreting",
+      "type": "code_interpreter_call"
+    }
+  ],
+  "model": "o3-deep-research",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "low",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

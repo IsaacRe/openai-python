@@ -1,0 +1,51 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "server_label": "string",
+      "tools": [
+        {
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to perform."
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          },
+          "name": "string",
+          "annotations": null,
+          "description": null
+        }
+      ],
+      "type": "mcp_list_tools",
+      "error": null
+    }
+  ],
+  "model": "o3-deep-research",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "medium",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

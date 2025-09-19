@@ -1,4 +1,4 @@
-from openai import OpenAI, NotFoundError
+from openai import OpenAI, NotFoundError, BadRequestError, InternalServerError
 from openai.resources.responses import Responses
 from openai.types.responses.response_create_params import ResponseCreateParams
 from openai._types import NOT_GIVEN
@@ -56,6 +56,24 @@ def validate_response_create_args(response_create_args: ResponseCreateParams):
     # response ID
     if get_item(response_create_args, "previous_response_id"):
         set_item(response_create_args, "previous_response_id", "resp_abc123")
+    force_user_role = ["input_text", "input_image", "input_file", "input_audio"]
+    mutually_exclusive_pairs = [("file_id", "image_url", "file_abc123")]
+    reassign_content_vals = {"file_data": "base64"}
+    if isinstance((content := get_item((inp := get_item(response_create_args, "input")[0]), "content")), list):
+        if get_item(content[0], "type") in force_user_role:
+            set_item(inp, "role", "user")
+        if isinstance(content[0], dict):
+            inp = content[0]
+            for a, b, set_a in mutually_exclusive_pairs:
+                if a in inp and b in inp:
+                    if inp.get(a) and inp.get(b):
+                        inp[b] = None
+                    if not (inp.get(a) or inp.get(b)):
+                        inp[a] = set_a
+                    set_item(inp, "role", "user")
+            for k, v in reassign_content_vals.items():
+                if k in inp:
+                    inp[k] = v
     # serialize without NOT_GIVEN
     print(json.dumps(get_dict(response_create_args), indent=2))
     for k, v in get_dict(response_create_args).items():
@@ -69,5 +87,5 @@ def create_response(save_path: str, response_create_args: ResponseCreateParams):
     SAVE_FILEPATH = save_path
     try:
         return cli.create(**validate_response_create_args(response_create_args))
-    except NotFoundError as e:
+    except (NotFoundError, BadRequestError, InternalServerError) as e:
         print(repr(e))

@@ -1,0 +1,86 @@
+{
+  "include": [
+    "message.output_text.logprobs"
+  ],
+  "input": [
+    {
+      "content": [
+        {
+          "detail": "high",
+          "type": "input_image",
+          "file_id": "file_abc123",
+          "image_url": null,
+          "role": "user"
+        }
+      ],
+      "role": "user",
+      "type": "message"
+    }
+  ],
+  "model": "gpt-5-2025-08-07",
+  "prompt": {
+    "id": "pmpt_abc123",
+    "variables": {
+      "string": {
+        "detail": "auto",
+        "type": "input_image",
+        "file_id": null,
+        "image_url": null
+      }
+    },
+    "version": null
+  },
+  "prompt_cache_key": "string",
+  "reasoning": {
+    "effort": null,
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": "string",
+  "service_tier": "priority",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "mode": "required",
+    "tools": [
+      {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to perform."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      }
+    ],
+    "type": "allowed_tools"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "key": "string",
+        "type": "ne",
+        "value": 1.0
+      },
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "default-2024-11-15",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

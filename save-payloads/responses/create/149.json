@@ -1,0 +1,32 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "result": null,
+      "status": "generating",
+      "type": "image_generation_call"
+    }
+  ],
+  "model": "gpt-3.5-turbo-16k-0613",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "medium",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

@@ -1,0 +1,49 @@
+{
+  "input": [
+    {
+      "call_id": "string",
+      "output": {
+        "type": "computer_screenshot",
+        "file_id": "string",
+        "image_url": "string"
+      },
+      "type": "computer_call_output",
+      "id": "cuo_abc123",
+      "acknowledged_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "in_progress"
+    }
+  ],
+  "model": "gpt-4o-mini",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "name": "string",
+      "type": "custom",
+      "description": "string",
+      "format": {
+        "definition": "string",
+        "syntax": "regex",
+        "type": "grammar"
+      }
+    }
+  ],
+  "user": "string"
+}

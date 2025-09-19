@@ -1,0 +1,56 @@
+{
+  "input": [
+    {
+      "content": [
+        {
+          "detail": "low",
+          "type": "input_image",
+          "file_id": "string",
+          "image_url": null,
+          "role": "user"
+        }
+      ],
+      "role": "user",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "model": "gpt-4.1-2025-04-14",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "function"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "filters": [
+          {
+            "key": "string",
+            "type": "gt",
+            "value": true
+          }
+        ],
+        "type": "and"
+      },
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "auto",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

@@ -1,0 +1,71 @@
+{
+  "include": [
+    "file_search_call.results"
+  ],
+  "input": [
+    {
+      "content": [
+        {
+          "text": "string",
+          "type": "input_text"
+        }
+      ],
+      "role": "assistant",
+      "type": "message"
+    }
+  ],
+  "model": "gpt-5-mini",
+  "prompt": {
+    "id": "pmpt_abc123",
+    "variables": {
+      "string": {
+        "detail": "low",
+        "type": "input_image",
+        "file_id": "string",
+        "image_url": "string"
+      }
+    },
+    "version": null
+  },
+  "prompt_cache_key": "string",
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": "detailed",
+    "summary": "detailed"
+  },
+  "safety_identifier": "string",
+  "service_tier": "flex",
+  "text": {
+    "format": {
+      "name": "string",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to perform."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "type": "json_schema",
+      "description": "string",
+      "strict": false
+    },
+    "verbosity": "high"
+  },
+  "tool_choice": "required",
+  "tools": [
+    {
+      "name": "string",
+      "parameters": null,
+      "strict": null,
+      "type": "function",
+      "description": null
+    }
+  ],
+  "user": "string"
+}

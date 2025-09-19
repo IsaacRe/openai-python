@@ -1,0 +1,51 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "button": "back",
+        "type": "click",
+        "x": 16,
+        "y": 16
+      },
+      "call_id": "string",
+      "pending_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "in_progress",
+      "type": "computer_call"
+    }
+  ],
+  "model": "gpt-4o-audio-preview-2024-12-17",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "server_label": "string",
+      "type": "mcp",
+      "allowed_tools": null,
+      "authorization": "string",
+      "connector_id": "connector_sharepoint",
+      "headers": null,
+      "require_approval": null,
+      "server_description": "string",
+      "server_url": "string"
+    }
+  ],
+  "user": "string"
+}

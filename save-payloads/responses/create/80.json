@@ -1,0 +1,32 @@
+{
+  "input": [
+    {
+      "approval_request_id": "string",
+      "approve": false,
+      "type": "mcp_approval_response",
+      "id": null,
+      "reason": null
+    }
+  ],
+  "model": "o4-mini-deep-research-2025-06-26",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "medium",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

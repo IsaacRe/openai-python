@@ -1,0 +1,51 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "button": "left",
+        "type": "click",
+        "x": 16,
+        "y": 16
+      },
+      "call_id": "string",
+      "pending_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "in_progress",
+      "type": "computer_call"
+    }
+  ],
+  "model": "gpt-4o-2024-05-13",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "server_label": "string",
+      "type": "mcp",
+      "allowed_tools": null,
+      "authorization": "string",
+      "connector_id": "connector_microsoftteams",
+      "headers": null,
+      "require_approval": null,
+      "server_description": "string",
+      "server_url": "string"
+    }
+  ],
+  "user": "string"
+}

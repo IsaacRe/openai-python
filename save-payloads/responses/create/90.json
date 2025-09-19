@@ -1,0 +1,102 @@
+{
+  "include": [
+    "message.input_image.image_url"
+  ],
+  "input": [
+    {
+      "content": [
+        {
+          "detail": "low",
+          "type": "input_image",
+          "file_id": "string",
+          "image_url": null,
+          "role": "user"
+        }
+      ],
+      "role": "user",
+      "type": "message"
+    }
+  ],
+  "model": "gpt-5-nano",
+  "prompt": {
+    "id": "pmpt_abc123",
+    "variables": {
+      "string": {
+        "detail": "high",
+        "type": "input_image",
+        "file_id": null,
+        "image_url": null
+      }
+    },
+    "version": null
+  },
+  "prompt_cache_key": "string",
+  "reasoning": {
+    "effort": "high",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": "string",
+  "service_tier": "scale",
+  "stream": true,
+  "text": {
+    "format": {
+      "name": "string",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to perform."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      "type": "json_schema",
+      "description": "string",
+      "strict": null
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "mode": "auto",
+    "tools": [
+      {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to perform."
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      }
+    ],
+    "type": "allowed_tools"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "key": "string",
+        "type": "eq",
+        "value": "string"
+      },
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "auto",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

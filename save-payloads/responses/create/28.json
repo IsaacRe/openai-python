@@ -1,0 +1,40 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "queries": [
+        "string"
+      ],
+      "status": "in_progress",
+      "type": "file_search_call",
+      "results": null
+    }
+  ],
+  "model": "gpt-4o-2024-08-06",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "server_label": "string",
+      "type": "mcp",
+      "allowed_tools": null,
+      "authorization": "string",
+      "connector_id": "connector_googledrive",
+      "headers": null,
+      "require_approval": "never",
+      "server_description": "string",
+      "server_url": "string"
+    }
+  ],
+  "user": "string"
+}

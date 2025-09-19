@@ -1,0 +1,43 @@
+{
+  "input": [
+    {
+      "call_id": "string",
+      "output": {
+        "type": "computer_screenshot",
+        "file_id": "string",
+        "image_url": "string"
+      },
+      "type": "computer_call_output",
+      "id": null,
+      "acknowledged_safety_checks": null,
+      "status": "incomplete"
+    }
+  ],
+  "model": "gpt-4-turbo",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "medium",
+      "user_location": {
+        "type": "approximate",
+        "city": null,
+        "country": null,
+        "region": null,
+        "timezone": null
+      }
+    }
+  ],
+  "user": "string"
+}

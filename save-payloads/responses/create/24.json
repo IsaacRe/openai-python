@@ -1,0 +1,45 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "queries": [
+        "string"
+      ],
+      "status": "searching",
+      "type": "file_search_call",
+      "results": [
+        {
+          "attributes": {
+            "string": 1.0
+          },
+          "file_id": "string",
+          "filename": "string",
+          "score": 1.0,
+          "text": "string"
+        }
+      ]
+    }
+  ],
+  "model": "o1-mini",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search",
+      "filters": null,
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

@@ -1,0 +1,47 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "type": "wait"
+      },
+      "call_id": "string",
+      "pending_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "in_progress",
+      "type": "computer_call"
+    }
+  ],
+  "model": "codex-mini-latest",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "name": "string",
+      "type": "custom",
+      "description": "string",
+      "format": {
+        "definition": "string",
+        "syntax": "lark",
+        "type": "grammar"
+      }
+    }
+  ],
+  "user": "string"
+}

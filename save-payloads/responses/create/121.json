@@ -1,0 +1,48 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "type": "double_click",
+        "x": 16,
+        "y": 16
+      },
+      "call_id": "string",
+      "pending_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "incomplete",
+      "type": "computer_call"
+    }
+  ],
+  "model": "gpt-4o-mini-audio-preview",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "container": {
+        "type": "auto",
+        "file_ids": [
+          "string"
+        ]
+      },
+      "type": "code_interpreter"
+    }
+  ],
+  "user": "string"
+}

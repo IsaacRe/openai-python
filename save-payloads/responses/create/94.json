@@ -1,0 +1,54 @@
+{
+  "input": [
+    {
+      "content": [
+        {
+          "type": "input_file",
+          "file_data": "base64",
+          "file_id": null,
+          "file_url": "string",
+          "filename": "string"
+        }
+      ],
+      "role": "user",
+      "type": "message"
+    }
+  ],
+  "model": "gpt-5-chat-latest",
+  "prompt": {
+    "id": "pmpt_abc123",
+    "variables": null,
+    "version": null
+  },
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "type": "computer_use_preview"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "key": "string",
+        "type": "lt",
+        "value": true
+      },
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "auto",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

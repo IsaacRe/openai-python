@@ -1,0 +1,33 @@
+{
+  "input": [
+    {
+      "arguments": "string",
+      "call_id": "string",
+      "name": "string",
+      "type": "function_call",
+      "id": "_abc123",
+      "status": "completed"
+    }
+  ],
+  "model": "gpt-4-0314",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

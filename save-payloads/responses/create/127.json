@@ -1,0 +1,46 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "text": "string",
+        "type": "type"
+      },
+      "call_id": "string",
+      "pending_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "incomplete",
+      "type": "computer_call"
+    }
+  ],
+  "model": "chatgpt-4o-latest",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "name": "string",
+      "type": "custom",
+      "description": "string",
+      "format": {
+        "type": "text"
+      }
+    }
+  ],
+  "user": "string"
+}

@@ -1,0 +1,38 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "code": "string",
+      "container_id": "string",
+      "outputs": [
+        {
+          "logs": "string",
+          "type": "logs"
+        }
+      ],
+      "status": "in_progress",
+      "type": "code_interpreter_call"
+    }
+  ],
+  "model": "o1-pro-2025-03-19",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "low",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

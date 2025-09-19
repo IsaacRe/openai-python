@@ -1,0 +1,52 @@
+{
+  "input": [
+    {
+      "content": [
+        {
+          "text": "string",
+          "type": "input_text"
+        }
+      ],
+      "role": "user",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "model": "gpt-4.1-nano",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "type": "code_interpreter"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "filters": [
+          {
+            "key": "string",
+            "type": "ne",
+            "value": 1.0
+          }
+        ],
+        "type": "or"
+      },
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "default-2024-11-15",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

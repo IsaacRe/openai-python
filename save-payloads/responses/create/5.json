@@ -1,0 +1,64 @@
+{
+  "include": [
+    "reasoning.encrypted_content"
+  ],
+  "input": [
+    {
+      "content": [
+        {
+          "detail": "auto",
+          "type": "input_image",
+          "file_id": null,
+          "image_url": null
+        }
+      ],
+      "role": "user",
+      "type": "message",
+      "file_id": "file_abc123"
+    }
+  ],
+  "model": "gpt-5-mini-2025-08-07",
+  "prompt": {
+    "id": "pmpt_abc123",
+    "variables": {
+      "string": {
+        "type": "input_file",
+        "file_data": "string",
+        "file_id": "string",
+        "file_url": "string",
+        "filename": "string"
+      }
+    },
+    "version": null
+  },
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "type": "file_search"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "key": "string",
+        "type": "gt",
+        "value": true
+      },
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "auto",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

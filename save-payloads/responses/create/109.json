@@ -1,0 +1,49 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "content": [
+        {
+          "refusal": "string",
+          "type": "refusal"
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "model": "o1-preview",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search",
+      "filters": {
+        "allowed_domains": [
+          "string"
+        ]
+      },
+      "search_context_size": "low",
+      "user_location": {
+        "city": "string",
+        "country": "string",
+        "region": "string",
+        "timezone": "string",
+        "type": "approximate"
+      }
+    }
+  ],
+  "user": "string"
+}

@@ -1,0 +1,67 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "queries": [
+        "string"
+      ],
+      "status": "completed",
+      "type": "file_search_call",
+      "results": [
+        {
+          "attributes": {
+            "string": true
+          },
+          "file_id": "string",
+          "filename": "string",
+          "score": 1.0,
+          "text": "string"
+        }
+      ]
+    }
+  ],
+  "model": "o1-mini-2024-09-12",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "server_label": "string",
+      "type": "mcp",
+      "allowed_tools": [
+        "string"
+      ],
+      "authorization": "string",
+      "connector_id": "connector_dropbox",
+      "headers": {
+        "string": "string"
+      },
+      "require_approval": {
+        "always": {
+          "read_only": true,
+          "tool_names": [
+            "string"
+          ]
+        },
+        "never": {
+          "read_only": true,
+          "tool_names": [
+            "string"
+          ]
+        }
+      },
+      "server_description": "string",
+      "server_url": "string"
+    }
+  ],
+  "user": "string"
+}

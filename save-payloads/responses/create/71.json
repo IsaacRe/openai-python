@@ -1,0 +1,43 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "command": [
+          "string"
+        ],
+        "env": {
+          "string": "string"
+        },
+        "type": "exec",
+        "timeout_ms": null,
+        "user": null,
+        "working_directory": null
+      },
+      "call_id": "string",
+      "status": "incomplete",
+      "type": "local_shell_call"
+    }
+  ],
+  "model": "computer-use-preview",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "medium",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

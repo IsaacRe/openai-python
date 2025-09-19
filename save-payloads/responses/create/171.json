@@ -1,0 +1,33 @@
+{
+  "input": [
+    {
+      "call_id": "string",
+      "input": "string",
+      "name": "string",
+      "type": "custom_tool_call",
+      "id": "_abc123"
+    }
+  ],
+  "model": "o1-pro-2025-03-19",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

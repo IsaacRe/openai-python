@@ -1,0 +1,31 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "result": null,
+      "status": "failed",
+      "type": "image_generation_call"
+    }
+  ],
+  "model": "o1-pro",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

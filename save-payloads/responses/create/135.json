@@ -1,0 +1,36 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "pattern": "string",
+        "type": "find",
+        "url": "string"
+      },
+      "status": "completed",
+      "type": "web_search_call"
+    }
+  ],
+  "model": "gpt-4-1106-preview",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

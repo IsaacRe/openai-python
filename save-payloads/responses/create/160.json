@@ -1,0 +1,32 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "output": "string",
+      "type": "local_shell_call_output",
+      "status": "completed"
+    }
+  ],
+  "model": "o1-pro",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "low",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

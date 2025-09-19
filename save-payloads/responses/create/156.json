@@ -1,0 +1,44 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "action": {
+        "command": [
+          "string"
+        ],
+        "env": {
+          "string": "string"
+        },
+        "type": "exec",
+        "timeout_ms": 16,
+        "user": "string",
+        "working_directory": "string"
+      },
+      "call_id": "string",
+      "status": "in_progress",
+      "type": "local_shell_call"
+    }
+  ],
+  "model": "o4-mini-deep-research",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

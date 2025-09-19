@@ -1,0 +1,37 @@
+{
+  "input": [
+    {
+      "call_id": "string",
+      "output": {
+        "type": "computer_screenshot",
+        "file_id": "string",
+        "image_url": "string"
+      },
+      "type": "computer_call_output",
+      "id": null,
+      "acknowledged_safety_checks": null,
+      "status": null
+    }
+  ],
+  "model": "gpt-4-turbo-2024-04-09",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

@@ -1,0 +1,40 @@
+{
+  "input": [
+    {
+      "content": [
+        {
+          "input_audio": {
+            "data": "string",
+            "format": "wav"
+          },
+          "type": "input_audio"
+        }
+      ],
+      "role": "user",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "model": "o3-2025-04-16",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "display_height": 16,
+      "display_width": 16,
+      "environment": "windows",
+      "type": "computer_use_preview"
+    }
+  ],
+  "user": "string"
+}

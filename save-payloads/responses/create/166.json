@@ -1,0 +1,33 @@
+{
+  "input": [
+    {
+      "approval_request_id": "string",
+      "approve": true,
+      "type": "mcp_approval_response",
+      "id": "mcpa_abc123",
+      "reason": "string"
+    }
+  ],
+  "model": "o4-mini-deep-research",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "low",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

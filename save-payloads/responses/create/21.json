@@ -1,0 +1,63 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "content": [
+        {
+          "annotations": [
+            {
+              "file_id": "string",
+              "index": 16,
+              "type": "file_path"
+            }
+          ],
+          "text": "string",
+          "type": "output_text",
+          "logprobs": [
+            {
+              "token": "string",
+              "bytes": [
+                16
+              ],
+              "logprob": 1.0,
+              "top_logprobs": [
+                {
+                  "token": "string",
+                  "bytes": [
+                    16
+                  ],
+                  "logprob": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "role": "assistant",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "model": "o1-2024-12-17",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "display_height": 16,
+      "display_width": 16,
+      "environment": "browser",
+      "type": "computer_use_preview"
+    }
+  ],
+  "user": "string"
+}

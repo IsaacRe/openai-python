@@ -1,0 +1,49 @@
+{
+  "input": [
+    {
+      "call_id": "string",
+      "output": {
+        "type": "computer_screenshot",
+        "file_id": "string",
+        "image_url": "string"
+      },
+      "type": "computer_call_output",
+      "id": null,
+      "acknowledged_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": null,
+          "message": null
+        }
+      ],
+      "status": "completed"
+    }
+  ],
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "low",
+      "user_location": {
+        "type": "approximate",
+        "city": "string",
+        "country": "string",
+        "region": "string",
+        "timezone": "string"
+      }
+    }
+  ],
+  "user": "string"
+}

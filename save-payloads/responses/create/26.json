@@ -1,0 +1,68 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "queries": [
+        "string"
+      ],
+      "status": "incomplete",
+      "type": "file_search_call",
+      "results": [
+        {
+          "attributes": {
+            "string": false
+          },
+          "file_id": "string",
+          "filename": "string",
+          "score": 1.0,
+          "text": "string"
+        }
+      ]
+    }
+  ],
+  "model": "gpt-4o",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "server_label": "string",
+      "type": "mcp",
+      "allowed_tools": {
+        "read_only": true,
+        "tool_names": [
+          "string"
+        ]
+      },
+      "authorization": "string",
+      "connector_id": "connector_gmail",
+      "headers": null,
+      "require_approval": {
+        "always": {
+          "read_only": false,
+          "tool_names": [
+            "string"
+          ]
+        },
+        "never": {
+          "read_only": false,
+          "tool_names": [
+            "string"
+          ]
+        }
+      },
+      "server_description": "string",
+      "server_url": "string"
+    }
+  ],
+  "user": "string"
+}

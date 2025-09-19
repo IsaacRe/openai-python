@@ -1,0 +1,53 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "queries": [
+        "string"
+      ],
+      "status": "in_progress",
+      "type": "file_search_call",
+      "results": [
+        {
+          "attributes": {
+            "string": "string"
+          },
+          "file_id": "string",
+          "filename": "string",
+          "score": 1.0,
+          "text": "string"
+        }
+      ]
+    }
+  ],
+  "model": "o1-preview-2024-09-12",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_2025_08_26",
+      "filters": {
+        "allowed_domains": null
+      },
+      "search_context_size": "medium",
+      "user_location": {
+        "city": null,
+        "country": null,
+        "region": null,
+        "timezone": null,
+        "type": "approximate"
+      }
+    }
+  ],
+  "user": "string"
+}

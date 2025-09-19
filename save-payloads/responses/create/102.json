@@ -1,0 +1,64 @@
+{
+  "input": [
+    {
+      "content": [
+        {
+          "type": "input_file",
+          "file_data": "base64",
+          "file_id": null,
+          "file_url": "string",
+          "filename": "string"
+        }
+      ],
+      "role": "user",
+      "status": "incomplete",
+      "type": "message"
+    }
+  ],
+  "model": "o4-mini-2025-04-16",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "filters": [
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to perform."
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "type": "and"
+      },
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "auto",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

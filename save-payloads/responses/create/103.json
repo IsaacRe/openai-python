@@ -1,0 +1,47 @@
+{
+  "input": [
+    {
+      "content": [
+        {
+          "input_audio": {
+            "data": "string",
+            "format": "mp3"
+          },
+          "type": "input_audio"
+        }
+      ],
+      "role": "user",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "model": "o3",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "stream": true,
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": null,
+      "max_num_results": 16,
+      "ranking_options": {
+        "ranker": "default-2024-11-15",
+        "score_threshold": 1.0
+      }
+    }
+  ],
+  "user": "string"
+}

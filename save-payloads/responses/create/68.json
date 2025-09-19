@@ -1,0 +1,33 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "code": null,
+      "container_id": "string",
+      "outputs": null,
+      "status": "failed",
+      "type": "code_interpreter_call"
+    }
+  ],
+  "model": "o3-deep-research-2025-06-26",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "medium",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}

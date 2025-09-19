@@ -1,0 +1,31 @@
+{
+  "input": [
+    {
+      "id": "_abc123",
+      "output": "string",
+      "type": "local_shell_call_output",
+      "status": "in_progress"
+    }
+  ],
+  "model": "computer-use-preview-2025-03-11",
+  "prompt_cache_key": "string",
+  "safety_identifier": "string",
+  "text": {
+    "format": {
+      "type": "json_object"
+    },
+    "verbosity": null
+  },
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "user": "string"
+}
