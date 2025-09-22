@@ -9,9 +9,10 @@ from openai._models import BaseModel
 from openai._utils._transform import PropertyInfo
 import openai
 
-from openai_request import create_response
+from openai_request import create_response, create_response_output
 
 SAVE_PAYLOAD_DIR = "save-payloads/responses/create"
+SAVE_RESPONSE_DIR = "save-payloads/responses/result"
 
 INT_VAL = 16
 FLOAT_VAL = 1.0
@@ -197,6 +198,7 @@ def generate_basemodel(cls: ModelMetaclass, seed: int, stride_dict: Optional[dic
     type_dict = cls.__pydantic_fields__
     has_type = "type" in type_dict or cls in TYPELESS_ID_PREFIXES
     for key, field_info in type_dict.items():
+        key = field_info.alias or key
         if not hasattr(field_info, "annotation"):
             import pdb; pdb.set_trace()
         typ = field_info.annotation
@@ -308,5 +310,23 @@ def gen_response_create_params():
         print(out)
 
 
+def gen_response_result_params():
+    from openai.types.responses.response import Response
+    num_tests, response_result = generate(Response, 0, {}, True)
+    for i in tqdm(range(num_tests)):
+        save_path = os.path.join(SAVE_RESPONSE_DIR, f"{i}.json")
+        if os.path.exists(save_path):
+            continue
+        _, response_result = generate(Response, i, {}, True)
+        create_response_output(save_path, response_result)
+
+
 if __name__ == "__main__":
-    gen_response_create_params()
+    from argparse import ArgumentParser
+    parser = ArgumentParser()
+    parser.add_argument('-r', '--gen-response', action='store_true')
+    args = parser.parse_args()
+    if args.gen_response:
+        gen_response_result_params()
+    else:
+        gen_response_create_params()
