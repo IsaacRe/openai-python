@@ -99,6 +99,16 @@
   "text": null,
   "top_logprobs": null,
   "truncation": null,
-  "usage": null,
+  "usage": {
+    "input_tokens": 0,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 0,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 0
+  },
   "user": null
 }

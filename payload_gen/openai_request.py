@@ -83,6 +83,17 @@ def validate_response_create_args(response_create_args: ResponseCreateParams):
     return response_create_args
 
 
+def validate_responses_output(response_output: Response):
+    from openai.types.responses.response_usage import ResponseUsage, InputTokensDetails, OutputTokensDetails
+    if response_output.usage is None:
+        response_output.usage = ResponseUsage(
+            input_tokens=0,
+            input_tokens_details=InputTokensDetails(cached_tokens=0),
+            output_tokens=0,
+            output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
+            total_tokens=0
+        )
+
 def create_response(save_path: str, response_create_args: ResponseCreateParams):
     global SAVE_FILEPATH
     SAVE_FILEPATH = save_path
@@ -95,4 +106,5 @@ def create_response(save_path: str, response_create_args: ResponseCreateParams):
 def create_response_output(save_path: str, response_output: Response):
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
     with open(save_path, 'w+') as f:
+        validate_responses_output(response_output)
         json.dump(response_output.model_dump(), f, indent=2)
