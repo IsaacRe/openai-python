@@ -1,0 +1,89 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "arguments": "string",
+      "call_id": "string",
+      "name": "string",
+      "type": "function_call",
+      "id": "_abc123",
+      "status": "in_progress"
+    }
+  ],
+  "metadata": null,
+  "model": "gpt-4",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "server_label": "string",
+      "tools": [
+        {
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to perform."
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          },
+          "name": "string",
+          "annotations": {
+            "type": "object",
+            "properties": {
+              "query": {
+                "type": "string",
+                "description": "The search query to perform."
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "additionalProperties": false
+          },
+          "description": "string"
+        }
+      ],
+      "type": "mcp_list_tools",
+      "error": "string"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview",
+      "search_context_size": "high",
+      "user_location": null
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

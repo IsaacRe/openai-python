@@ -103,6 +103,10 @@ def dict_generator(type_name: str, args: type, metadata: tuple[Any], seed: int, 
 def _union_generator_build(type_name: str, args: type, seed: int, stride_dict: Optional[dict[str, int]], key_in_data: str = "", data_cls: str = "") -> "Any":
     cum_stride = 0
     outputs = []
+    # do_break = type_name == 'typing.Union[openai.types.responses.easy_input_message_param.EasyInputMessageParam, openai.types.responses.response_input_param.Message, openai.types.responses.response_output_message_param.ResponseOutputMessageParam, openai.types.responses.response_file_search_tool_call_param.ResponseFileSearchToolCallParam, openai.types.responses.response_computer_tool_call_param.ResponseComputerToolCallParam, openai.types.responses.response_input_param.ComputerCallOutput, openai.types.responses.response_function_web_search_param.ResponseFunctionWebSearchParam, openai.types.responses.response_function_tool_call_param.ResponseFunctionToolCallParam, openai.types.responses.response_input_param.FunctionCallOutput, openai.types.responses.response_reasoning_item_param.ResponseReasoningItemParam, openai.types.responses.response_input_param.ImageGenerationCall, openai.types.responses.response_code_interpreter_tool_call_param.ResponseCodeInterpreterToolCallParam, openai.types.responses.response_input_param.LocalShellCall, openai.types.responses.response_input_param.LocalShellCallOutput, openai.types.responses.response_input_param.McpListTools, openai.types.responses.response_input_param.McpApprovalRequest, openai.types.responses.response_input_param.McpApprovalResponse, openai.types.responses.response_input_param.McpCall, openai.types.responses.response_custom_tool_call_output_param.ResponseCustomToolCallOutputParam, openai.types.responses.response_custom_tool_call_param.ResponseCustomToolCallParam, openai.types.responses.response_input_param.ItemReference]'
+    # if do_break:
+    #     import pdb; pdb.set_trace()
+
     for i in range(len(args)):
         # from openai.types.responses.easy_input_message_param import EasyInputMessageParam
         # if args[i] == EasyInputMessageParam:
@@ -114,7 +118,8 @@ def _union_generator_build(type_name: str, args: type, seed: int, stride_dict: O
     for cum_stride, output in outputs:
         if seed < cum_stride:
             break
-    
+    # if do_break:
+    #     import pdb; pdb.set_trace()
     stride_dict[type_name] = outputs[-1][0] # total cumulative stride
     return output
 
@@ -158,6 +163,9 @@ def literal_generator(type_name: str, args: type, metadata: tuple[Any], seed: in
     
     if build:
         stride_dict[type_name] = len(args)
+
+    # if output == "output_text":
+    #     import pdb; pdb.set_trace()
 
     return output
 
@@ -231,6 +239,10 @@ def generate_typeddict(cls: _TypedDictMeta, seed: int, stride_dict: Optional[dic
 def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build: bool, key_in_data: str = "", data_cls: str = "") -> "tuple[int, Any]":
     # if key_in_data == "input":
     #     import pdb; pdb.set_trace()
+    # from openai.types.responses.response_input_param import ResponseInputItemParam
+
+    # if typ == ResponseInputItemParam:
+    #     import pdb; pdb.set_trace()
     type_name = repr(typ)
     if isinstance(typ, _AnnotatedAlias):
         if not hasattr(typ, "__args__"):
@@ -298,26 +310,40 @@ def generate(typ: type, seed: int, stride_dict: Optional[dict[str, int]], build:
     return stride, output
 
 
-def gen_response_create_params():
+def gen_response_create_params(seed: Optional[int]):
     from openai.types.responses.response_create_params import ResponseCreateParams
-    num_tests, response_create_params = generate(ResponseCreateParams, 0, {}, True)
-    for i in tqdm(range(num_tests)):
+    if seed is None:
+        num_tests, response_create_params = generate(ResponseCreateParams, 0, {}, True)
+        for i in tqdm(range(num_tests)):
+            save_path = os.path.join(SAVE_PAYLOAD_DIR, f"{i}.json")
+            if os.path.exists(save_path):
+                continue
+            _, response_create_params = generate(ResponseCreateParams, i, {}, True)
+            out = create_response(save_path, response_create_params)
+            print(out)
+    else:
+        i = seed
         save_path = os.path.join(SAVE_PAYLOAD_DIR, f"{i}.json")
-        if os.path.exists(save_path):
-            continue
         _, response_create_params = generate(ResponseCreateParams, i, {}, True)
         out = create_response(save_path, response_create_params)
         print(out)
 
 
-def gen_response_result_params():
+def gen_response_result_params(seed: Optional[int]):
     from openai.types.responses.response import Response
-    num_tests, response_result = generate(Response, 0, {}, True)
-    for i in tqdm(range(num_tests)):
+    if seed is None:
+        num_tests, response_result = generate(Response, 0, {}, True)
+        for i in tqdm(range(num_tests)):
+            save_path = os.path.join(SAVE_RESPONSE_DIR, f"{i}.json")
+            if os.path.exists(save_path):
+                continue
+            _, response_result = generate(Response, i, {}, True)
+            create_response_output(save_path, response_result)
+    else:
+        i = seed
         save_path = os.path.join(SAVE_RESPONSE_DIR, f"{i}.json")
-        if os.path.exists(save_path):
-            continue
         _, response_result = generate(Response, i, {}, True)
+        import pdb; pdb.set_trace()
         create_response_output(save_path, response_result)
 
 
@@ -325,8 +351,9 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
     parser = ArgumentParser()
     parser.add_argument('-r', '--gen-response', action='store_true')
+    parser.add_argument('-s', '--seed', type=int, default=None)
     args = parser.parse_args()
     if args.gen_response:
-        gen_response_result_params()
+        gen_response_result_params(args.seed)
     else:
-        gen_response_create_params()
+        gen_response_create_params(args.seed)

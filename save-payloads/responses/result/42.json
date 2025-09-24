@@ -1,0 +1,77 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "call_id": "string",
+      "output": {
+        "type": "computer_screenshot",
+        "file_id": "string",
+        "image_url": "string"
+      },
+      "type": "computer_call_output",
+      "id": "cuo_abc123",
+      "acknowledged_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "in_progress"
+    }
+  ],
+  "metadata": null,
+  "model": "gpt-4o-mini",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "code": null,
+      "container_id": "string",
+      "outputs": null,
+      "status": "incomplete",
+      "type": "code_interpreter_call"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "image_generation",
+      "background": null,
+      "input_fidelity": null,
+      "input_image_mask": null,
+      "model": null,
+      "moderation": null,
+      "output_compression": null,
+      "output_format": null,
+      "partial_images": null,
+      "quality": null,
+      "size": null
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

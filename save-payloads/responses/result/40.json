@@ -1,0 +1,81 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "id": "_abc123",
+      "action": {
+        "text": "string",
+        "type": "type"
+      },
+      "call_id": "string",
+      "pending_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "incomplete",
+      "type": "computer_call"
+    }
+  ],
+  "metadata": null,
+  "model": "chatgpt-4o-latest",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "code": "string",
+      "container_id": "string",
+      "outputs": [
+        {
+          "logs": "string",
+          "type": "logs"
+        }
+      ],
+      "status": "in_progress",
+      "type": "code_interpreter_call"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "image_generation",
+      "background": "auto",
+      "input_fidelity": null,
+      "input_image_mask": null,
+      "model": null,
+      "moderation": null,
+      "output_compression": null,
+      "output_format": "jpeg",
+      "partial_images": null,
+      "quality": "high",
+      "size": "1536x1024"
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

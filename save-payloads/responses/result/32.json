@@ -1,0 +1,86 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "id": "_abc123",
+      "action": {
+        "button": "back",
+        "type": "click",
+        "x": 16,
+        "y": 16
+      },
+      "call_id": "string",
+      "pending_safety_checks": [
+        {
+          "id": "_abc123",
+          "code": "string",
+          "message": "string"
+        }
+      ],
+      "status": "in_progress",
+      "type": "computer_call"
+    }
+  ],
+  "metadata": null,
+  "model": "gpt-4o-audio-preview-2024-12-17",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "summary": [
+        {
+          "text": "string",
+          "type": "summary_text"
+        }
+      ],
+      "type": "reasoning",
+      "content": [
+        {
+          "text": "string",
+          "type": "reasoning_text"
+        }
+      ],
+      "encrypted_content": "string",
+      "status": "in_progress"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "server_label": "string",
+      "type": "mcp",
+      "allowed_tools": null,
+      "authorization": null,
+      "connector_id": "connector_outlookemail",
+      "headers": null,
+      "require_approval": null,
+      "server_description": null,
+      "server_url": null
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

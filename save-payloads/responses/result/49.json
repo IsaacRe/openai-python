@@ -1,0 +1,68 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "id": "_abc123",
+      "action": {
+        "pattern": "string",
+        "type": "find",
+        "url": "string"
+      },
+      "status": "failed",
+      "type": "web_search_call"
+    }
+  ],
+  "metadata": null,
+  "model": "gpt-4-vision-preview",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "arguments": "string",
+      "name": "string",
+      "server_label": "string",
+      "type": "mcp_call",
+      "error": null,
+      "output": null
+    }
+  ],
+  "parallel_tool_calls": false,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": "medium",
+      "user_location": {
+        "type": "approximate",
+        "city": null,
+        "country": null,
+        "region": null,
+        "timezone": null
+      }
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

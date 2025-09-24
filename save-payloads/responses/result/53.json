@@ -1,0 +1,58 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "arguments": "string",
+      "call_id": "string",
+      "name": "string",
+      "type": "function_call",
+      "id": null,
+      "status": null
+    }
+  ],
+  "metadata": null,
+  "model": "gpt-4-32k",
+  "object": "response",
+  "output": [
+    {
+      "call_id": "string",
+      "input": "string",
+      "name": "string",
+      "type": "custom_tool_call",
+      "id": "_abc123"
+    }
+  ],
+  "parallel_tool_calls": false,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "type": "web_search_preview_2025_03_11",
+      "search_context_size": null,
+      "user_location": null
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

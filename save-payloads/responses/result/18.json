@@ -1,0 +1,92 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "id": "_abc123",
+      "content": [
+        {
+          "annotations": [
+            {
+              "file_id": "string",
+              "filename": "string",
+              "index": 16,
+              "type": "file_citation"
+            }
+          ],
+          "text": "string",
+          "type": "output_text",
+          "logprobs": [
+            {
+              "token": "string",
+              "bytes": [
+                16
+              ],
+              "logprob": 1.0,
+              "top_logprobs": [
+                {
+                  "token": "string",
+                  "bytes": [
+                    16
+                  ],
+                  "logprob": 1.0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "role": "assistant",
+      "status": "in_progress",
+      "type": "message"
+    }
+  ],
+  "metadata": null,
+  "model": "o3-mini",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "action": {
+        "pattern": "string",
+        "type": "find",
+        "url": "string"
+      },
+      "status": "failed",
+      "type": "web_search_call"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "display_height": 16,
+      "display_width": 16,
+      "environment": "mac",
+      "type": "computer_use_preview"
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

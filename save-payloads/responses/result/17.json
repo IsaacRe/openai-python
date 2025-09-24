@@ -1,0 +1,70 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": {
+    "code": "image_file_not_found",
+    "message": "string"
+  },
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "content": [
+        {
+          "input_audio": {
+            "data": "string",
+            "format": "wav"
+          },
+          "type": "input_audio"
+        }
+      ],
+      "role": "system",
+      "status": null,
+      "type": null
+    }
+  ],
+  "metadata": null,
+  "model": "o3-2025-04-16",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "action": {
+        "type": "open_page",
+        "url": "string"
+      },
+      "status": "completed",
+      "type": "web_search_call"
+    }
+  ],
+  "parallel_tool_calls": false,
+  "temperature": null,
+  "tool_choice": {
+    "name": "string",
+    "type": "custom"
+  },
+  "tools": [
+    {
+      "display_height": 16,
+      "display_width": 16,
+      "environment": "windows",
+      "type": "computer_use_preview"
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

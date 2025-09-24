@@ -1,0 +1,89 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": {
+    "code": "invalid_image_url",
+    "message": "string"
+  },
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "content": [
+        {
+          "type": "input_file",
+          "file_data": null,
+          "file_id": null,
+          "file_url": null,
+          "filename": null
+        }
+      ],
+      "role": "system",
+      "type": null
+    }
+  ],
+  "metadata": null,
+  "model": "gpt-5-chat-latest",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "queries": [
+        "string"
+      ],
+      "status": "completed",
+      "type": "file_search_call",
+      "results": [
+        {
+          "attributes": {
+            "string": true
+          },
+          "file_id": null,
+          "filename": null,
+          "score": null,
+          "text": null
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": false,
+  "temperature": null,
+  "tool_choice": {
+    "type": "computer_use_preview"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "key": "string",
+        "type": "lt",
+        "value": true
+      },
+      "max_num_results": null,
+      "ranking_options": null
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": {
+    "id": "pmpt_abc123",
+    "variables": null,
+    "version": null
+  },
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}

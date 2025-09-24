@@ -1,0 +1,88 @@
+{
+  "id": "_abc123",
+  "created_at": 1.0,
+  "error": {
+    "code": "image_too_small",
+    "message": "string"
+  },
+  "incomplete_details": null,
+  "instructions": [
+    {
+      "content": [
+        {
+          "input_audio": {
+            "data": "string",
+            "format": "wav"
+          },
+          "type": "input_audio"
+        }
+      ],
+      "role": "user",
+      "type": null
+    }
+  ],
+  "metadata": null,
+  "model": "gpt-4.1-mini",
+  "object": "response",
+  "output": [
+    {
+      "id": "_abc123",
+      "queries": [
+        "string"
+      ],
+      "status": "failed",
+      "type": "file_search_call",
+      "results": [
+        {
+          "attributes": null,
+          "file_id": null,
+          "filename": null,
+          "score": null,
+          "text": null
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": false,
+  "temperature": null,
+  "tool_choice": {
+    "type": "image_generation"
+  },
+  "tools": [
+    {
+      "type": "file_search",
+      "vector_store_ids": [
+        "string"
+      ],
+      "filters": {
+        "filters": [
+          {
+            "key": "string",
+            "type": "eq",
+            "value": "string"
+          }
+        ],
+        "type": "and"
+      },
+      "max_num_results": null,
+      "ranking_options": null
+    }
+  ],
+  "top_p": null,
+  "background": null,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "reasoning": null,
+  "safety_identifier": null,
+  "service_tier": null,
+  "status": null,
+  "text": null,
+  "top_logprobs": null,
+  "truncation": null,
+  "usage": null,
+  "user": null
+}
