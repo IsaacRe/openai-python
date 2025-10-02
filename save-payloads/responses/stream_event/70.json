@@ -1,0 +1,71 @@
+{
+  "response": {
+    "id": "_abc123",
+    "created_at": 1.0,
+    "error": {
+      "code": "image_too_large",
+      "message": "string"
+    },
+    "incomplete_details": null,
+    "instructions": [
+      {
+        "content": [
+          {
+            "input_audio": {
+              "data": "string",
+              "format": "mp3"
+            },
+            "type": "input_audio"
+          }
+        ],
+        "role": "developer",
+        "type": null
+      }
+    ],
+    "metadata": null,
+    "model": "string",
+    "object": "response",
+    "output": [
+      {
+        "arguments": "string",
+        "call_id": "string",
+        "name": "string",
+        "type": "function_call",
+        "id": null,
+        "status": null
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": null,
+    "tool_choice": {
+      "type": "web_search_preview_2025_03_11"
+    },
+    "tools": [
+      {
+        "name": "string",
+        "type": "custom",
+        "description": null,
+        "format": null
+      }
+    ],
+    "top_p": null,
+    "background": null,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": null,
+    "safety_identifier": null,
+    "service_tier": null,
+    "status": null,
+    "text": null,
+    "top_logprobs": null,
+    "truncation": null,
+    "usage": null,
+    "user": null
+  },
+  "sequence_number": 16,
+  "type": "response.in_progress"
+}

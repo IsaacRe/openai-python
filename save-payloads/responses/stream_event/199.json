@@ -1,0 +1,7 @@
+{
+  "input": "string",
+  "item_id": "string",
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.custom_tool_call_input.done"
+}

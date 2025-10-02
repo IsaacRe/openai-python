@@ -1,0 +1,8 @@
+{
+  "content_index": 16,
+  "item_id": "string",
+  "output_index": 16,
+  "sequence_number": 16,
+  "text": "string",
+  "type": "response.reasoning_text.done"
+}

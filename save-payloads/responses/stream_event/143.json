@@ -1,0 +1,23 @@
+{
+  "item": {
+    "id": "_abc123",
+    "summary": [
+      {
+        "text": "string",
+        "type": "summary_text"
+      }
+    ],
+    "type": "reasoning",
+    "content": [
+      {
+        "text": "string",
+        "type": "reasoning_text"
+      }
+    ],
+    "encrypted_content": "string",
+    "status": "in_progress"
+  },
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.output_item.added"
+}

@@ -249,15 +249,15 @@ class LocalShell(BaseModel):
 Tool: TypeAlias = Annotated[
     Union[
         FunctionTool,
-        FileSearchTool,
-        ComputerTool,
-        WebSearchTool,
-        Mcp,
-        CodeInterpreter,
-        ImageGeneration,
-        LocalShell,
+        # FileSearchTool,
+        # ComputerTool,
+        # WebSearchTool,
+        # Mcp,
+        # CodeInterpreter,
+        # ImageGeneration,
+        # LocalShell,
         CustomTool,
-        WebSearchPreviewTool,
+        # WebSearchPreviewTool,
     ],
     PropertyInfo(discriminator="type"),
 ]

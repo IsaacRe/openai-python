@@ -1,0 +1,7 @@
+{
+  "code": "string",
+  "message": "string",
+  "param": "string",
+  "sequence_number": 16,
+  "type": "error"
+}

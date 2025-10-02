@@ -1,0 +1,21 @@
+{
+  "content_index": 16,
+  "item_id": "string",
+  "output_index": 16,
+  "part": {
+    "annotations": [
+      {
+        "end_index": 16,
+        "start_index": 16,
+        "title": "string",
+        "type": "url_citation",
+        "url": "string"
+      }
+    ],
+    "text": "string",
+    "type": "output_text",
+    "logprobs": null
+  },
+  "sequence_number": 16,
+  "type": "response.content_part.added"
+}

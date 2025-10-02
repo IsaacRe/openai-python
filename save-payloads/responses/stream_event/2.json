@@ -1,0 +1,113 @@
+{
+  "response": {
+    "id": "_abc123",
+    "created_at": 1.0,
+    "error": {
+      "code": "invalid_prompt",
+      "message": "string"
+    },
+    "incomplete_details": {
+      "reason": null
+    },
+    "instructions": [
+      {
+        "content": [
+          {
+            "text": "string",
+            "type": "input_text"
+          }
+        ],
+        "role": "assistant",
+        "type": null
+      }
+    ],
+    "metadata": null,
+    "model": "string",
+    "object": "response",
+    "output": [
+      {
+        "id": "_abc123",
+        "content": [
+          {
+            "annotations": [
+              {
+                "container_id": "string",
+                "end_index": 16,
+                "file_id": "string",
+                "filename": "string",
+                "start_index": 16,
+                "type": "container_file_citation"
+              }
+            ],
+            "text": "string",
+            "type": "output_text",
+            "logprobs": null
+          }
+        ],
+        "role": "assistant",
+        "status": "incomplete",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": null,
+    "tool_choice": "required",
+    "tools": [
+      {
+        "name": "string",
+        "parameters": null,
+        "strict": null,
+        "type": "function",
+        "description": null
+      }
+    ],
+    "top_p": null,
+    "background": null,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": {
+      "id": "pmpt_abc123",
+      "variables": null,
+      "version": null
+    },
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": "medium",
+      "generate_summary": "detailed",
+      "summary": "detailed"
+    },
+    "safety_identifier": null,
+    "service_tier": "flex",
+    "status": "in_progress",
+    "text": {
+      "format": {
+        "name": "string",
+        "schema_": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query to perform."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "type": "json_schema",
+        "description": null,
+        "strict": false
+      },
+      "verbosity": "high"
+    },
+    "top_logprobs": null,
+    "truncation": null,
+    "usage": null,
+    "user": null
+  },
+  "sequence_number": 16,
+  "type": "response.completed"
+}

@@ -10,7 +10,7 @@ from .response_input_image import ResponseInputImage
 
 __all__ = ["ResponsePrompt", "Variables"]
 
-Variables: TypeAlias = Union[str, ResponseInputText, ResponseInputImage, ResponseInputFile]
+Variables: TypeAlias = Union[str, ResponseInputText] #, ResponseInputImage, ResponseInputFile]
 
 
 class ResponsePrompt(BaseModel):

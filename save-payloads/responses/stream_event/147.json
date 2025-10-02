@@ -1,0 +1,12 @@
+{
+  "item": {
+    "call_id": "string",
+    "input": "string",
+    "name": "string",
+    "type": "custom_tool_call",
+    "id": "_abc123"
+  },
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.output_item.added"
+}

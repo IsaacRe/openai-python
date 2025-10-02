@@ -1,0 +1,129 @@
+{
+  "response": {
+    "id": "_abc123",
+    "created_at": 1.0,
+    "error": {
+      "code": "server_error",
+      "message": "string"
+    },
+    "incomplete_details": {
+      "reason": "max_output_tokens"
+    },
+    "instructions": "string",
+    "metadata": {
+      "string": "string"
+    },
+    "model": "string",
+    "object": "response",
+    "output": [
+      {
+        "id": "_abc123",
+        "content": [
+          {
+            "annotations": [
+              {
+                "file_id": "string",
+                "filename": "string",
+                "index": 16,
+                "type": "file_citation"
+              }
+            ],
+            "text": "string",
+            "type": "output_text",
+            "logprobs": [
+              {
+                "token": "string",
+                "bytes": [
+                  16
+                ],
+                "logprob": 1.0,
+                "top_logprobs": [
+                  {
+                    "token": "string",
+                    "bytes": [
+                      16
+                    ],
+                    "logprob": 1.0
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "role": "assistant",
+        "status": "in_progress",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 1.0,
+    "tool_choice": "none",
+    "tools": [
+      {
+        "name": "string",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query to perform."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "function",
+        "description": "string"
+      }
+    ],
+    "top_p": 1.0,
+    "background": true,
+    "conversation": {
+      "id": "conv_abc123"
+    },
+    "max_output_tokens": 16,
+    "max_tool_calls": 16,
+    "previous_response_id": "string",
+    "prompt": {
+      "id": "pmpt_abc123",
+      "variables": {
+        "string": "string"
+      },
+      "version": "string"
+    },
+    "prompt_cache_key": "string",
+    "reasoning": {
+      "effort": "minimal",
+      "generate_summary": "auto",
+      "summary": "auto"
+    },
+    "safety_identifier": "string",
+    "service_tier": "auto",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "low"
+    },
+    "top_logprobs": 16,
+    "truncation": "auto",
+    "usage": {
+      "input_tokens": 16,
+      "input_tokens_details": {
+        "cached_tokens": 16
+      },
+      "output_tokens": 16,
+      "output_tokens_details": {
+        "reasoning_tokens": 16
+      },
+      "total_tokens": 16
+    },
+    "user": "string"
+  },
+  "sequence_number": 16,
+  "type": "response.queued"
+}

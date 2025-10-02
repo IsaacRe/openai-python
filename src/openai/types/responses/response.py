@@ -14,7 +14,7 @@ from ..shared.metadata import Metadata
 from ..shared.reasoning import Reasoning
 from .tool_choice_types import ToolChoiceTypes
 from .tool_choice_custom import ToolChoiceCustom
-from .response_input_item import ResponseInputItem
+from .response_input_item import ResponseInputItem, SimpleItem
 from .tool_choice_allowed import ToolChoiceAllowed
 from .tool_choice_options import ToolChoiceOptions
 from .response_output_item import ResponseOutputItem
@@ -53,7 +53,7 @@ class Response(BaseModel):
     incomplete_details: Optional[IncompleteDetails] = None
     """Details about why the response is incomplete."""
 
-    instructions: Union[str, List[ResponseInputItem], None] = None
+    instructions: Union[str, List[SimpleItem], None] = None
     """A system (or developer) message inserted into the model's context.
 
     When using along with `previous_response_id`, the instructions from a previous
@@ -71,7 +71,7 @@ class Response(BaseModel):
     a maximum length of 512 characters.
     """
 
-    model: ResponsesModel
+    model: str
     """Model ID used to generate the response, like `gpt-4o` or `o3`.
 
     OpenAI offers a wide range of models with different capabilities, performance

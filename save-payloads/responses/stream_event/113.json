@@ -1,0 +1,125 @@
+{
+  "response": {
+    "id": "_abc123",
+    "created_at": 1.0,
+    "error": {
+      "code": "vector_store_timeout",
+      "message": "string"
+    },
+    "incomplete_details": null,
+    "instructions": [
+      {
+        "content": [
+          {
+            "detail": "low",
+            "type": "input_image",
+            "file_id": "string",
+            "image_url": "string"
+          }
+        ],
+        "role": "system",
+        "type": null
+      }
+    ],
+    "metadata": null,
+    "model": "string",
+    "object": "response",
+    "output": [
+      {
+        "id": "_abc123",
+        "content": [
+          {
+            "annotations": [
+              {
+                "file_id": "string",
+                "index": 16,
+                "type": "file_path"
+              }
+            ],
+            "text": "string",
+            "type": "output_text",
+            "logprobs": null
+          }
+        ],
+        "role": "assistant",
+        "status": "in_progress",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": false,
+    "temperature": null,
+    "tool_choice": {
+      "mode": "auto",
+      "tools": [
+        {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query to perform."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "type": "allowed_tools"
+    },
+    "tools": [
+      {
+        "name": "string",
+        "type": "custom",
+        "description": "string",
+        "format": {
+          "type": "text"
+        }
+      }
+    ],
+    "top_p": null,
+    "background": null,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": "high",
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "scale",
+    "status": "cancelled",
+    "text": {
+      "format": {
+        "name": "string",
+        "schema_": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query to perform."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "type": "json_schema",
+        "description": null,
+        "strict": null
+      },
+      "verbosity": null
+    },
+    "top_logprobs": null,
+    "truncation": null,
+    "usage": null,
+    "user": null
+  },
+  "sequence_number": 16,
+  "type": "response.incomplete"
+}

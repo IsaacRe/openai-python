@@ -281,6 +281,15 @@ class ItemReference(BaseModel):
     """The type of item to reference. Always `item_reference`."""
 
 
+SimpleItem: TypeAlias = Annotated[
+    Union[
+        EasyInputMessage,
+        Message,
+        ResponseOutputMessage,
+    ],
+    PropertyInfo(discriminator="type"),
+]
+
 ResponseInputItem: TypeAlias = Annotated[
     Union[
         EasyInputMessage,

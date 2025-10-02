@@ -1,0 +1,37 @@
+{
+  "content_index": 16,
+  "item_id": "string",
+  "output_index": 16,
+  "part": {
+    "annotations": [
+      {
+        "file_id": "string",
+        "filename": "string",
+        "index": 16,
+        "type": "file_citation"
+      }
+    ],
+    "text": "string",
+    "type": "output_text",
+    "logprobs": [
+      {
+        "token": "string",
+        "bytes": [
+          16
+        ],
+        "logprob": 1.0,
+        "top_logprobs": [
+          {
+            "token": "string",
+            "bytes": [
+              16
+            ],
+            "logprob": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  "sequence_number": 16,
+  "type": "response.content_part.added"
+}

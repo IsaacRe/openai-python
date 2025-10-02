@@ -1,0 +1,43 @@
+{
+  "item": {
+    "id": "_abc123",
+    "content": [
+      {
+        "annotations": [
+          {
+            "file_id": "string",
+            "filename": "string",
+            "index": 16,
+            "type": "file_citation"
+          }
+        ],
+        "text": "string",
+        "type": "output_text",
+        "logprobs": [
+          {
+            "token": "string",
+            "bytes": [
+              16
+            ],
+            "logprob": 1.0,
+            "top_logprobs": [
+              {
+                "token": "string",
+                "bytes": [
+                  16
+                ],
+                "logprob": 1.0
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "role": "assistant",
+    "status": "in_progress",
+    "type": "message"
+  },
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.output_item.done"
+}

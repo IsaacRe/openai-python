@@ -1,0 +1,20 @@
+{
+  "content_index": 16,
+  "delta": "string",
+  "item_id": "string",
+  "logprobs": [
+    {
+      "token": "string",
+      "logprob": 1.0,
+      "top_logprobs": [
+        {
+          "token": "string",
+          "logprob": 1.0
+        }
+      ]
+    }
+  ],
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.output_text.delta"
+}

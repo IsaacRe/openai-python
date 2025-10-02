@@ -1,0 +1,13 @@
+{
+  "item": {
+    "arguments": "string",
+    "call_id": "string",
+    "name": "string",
+    "type": "function_call",
+    "id": null,
+    "status": null
+  },
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.output_item.added"
+}

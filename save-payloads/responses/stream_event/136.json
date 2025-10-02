@@ -1,0 +1,28 @@
+{
+  "item": {
+    "id": "_abc123",
+    "content": [
+      {
+        "annotations": [
+          {
+            "container_id": "string",
+            "end_index": 16,
+            "file_id": "string",
+            "filename": "string",
+            "start_index": 16,
+            "type": "container_file_citation"
+          }
+        ],
+        "text": "string",
+        "type": "output_text",
+        "logprobs": null
+      }
+    ],
+    "role": "assistant",
+    "status": "incomplete",
+    "type": "message"
+  },
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.output_item.added"
+}

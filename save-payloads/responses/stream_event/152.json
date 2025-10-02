@@ -1,0 +1,25 @@
+{
+  "item": {
+    "id": "_abc123",
+    "content": [
+      {
+        "annotations": [
+          {
+            "file_id": "string",
+            "index": 16,
+            "type": "file_path"
+          }
+        ],
+        "text": "string",
+        "type": "output_text",
+        "logprobs": null
+      }
+    ],
+    "role": "assistant",
+    "status": "in_progress",
+    "type": "message"
+  },
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.output_item.done"
+}

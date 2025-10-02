@@ -1,0 +1,19 @@
+{
+  "content_index": 16,
+  "item_id": "string",
+  "output_index": 16,
+  "part": {
+    "annotations": [
+      {
+        "file_id": "string",
+        "index": 16,
+        "type": "file_path"
+      }
+    ],
+    "text": "string",
+    "type": "output_text",
+    "logprobs": null
+  },
+  "sequence_number": 16,
+  "type": "response.content_part.done"
+}

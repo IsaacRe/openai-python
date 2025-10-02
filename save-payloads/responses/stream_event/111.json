@@ -1,0 +1,112 @@
+{
+  "response": {
+    "id": "_abc123",
+    "created_at": 1.0,
+    "error": {
+      "code": "rate_limit_exceeded",
+      "message": "string"
+    },
+    "incomplete_details": {
+      "reason": "content_filter"
+    },
+    "instructions": [
+      {
+        "content": "string",
+        "role": "user",
+        "type": "message"
+      }
+    ],
+    "metadata": null,
+    "model": "string",
+    "object": "response",
+    "output": [
+      {
+        "id": "_abc123",
+        "content": [
+          {
+            "annotations": [
+              {
+                "end_index": 16,
+                "start_index": 16,
+                "title": "string",
+                "type": "url_citation",
+                "url": "string"
+              }
+            ],
+            "text": "string",
+            "type": "output_text",
+            "logprobs": null
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": false,
+    "temperature": null,
+    "tool_choice": "auto",
+    "tools": [
+      {
+        "name": "string",
+        "parameters": null,
+        "strict": false,
+        "type": "function",
+        "description": null
+      }
+    ],
+    "top_p": null,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": {
+      "id": "pmpt_abc123",
+      "variables": {
+        "string": {
+          "text": "string",
+          "type": "input_text"
+        }
+      },
+      "version": null
+    },
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": "low",
+      "generate_summary": "concise",
+      "summary": "concise"
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "failed",
+    "text": {
+      "format": {
+        "name": "string",
+        "schema_": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query to perform."
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        },
+        "type": "json_schema",
+        "description": "string",
+        "strict": true
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": null,
+    "truncation": "disabled",
+    "usage": null,
+    "user": null
+  },
+  "sequence_number": 16,
+  "type": "response.incomplete"
+}

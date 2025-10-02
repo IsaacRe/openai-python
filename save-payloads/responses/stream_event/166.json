@@ -1,0 +1,8 @@
+{
+  "content_index": 16,
+  "delta": "string",
+  "item_id": "string",
+  "output_index": 16,
+  "sequence_number": 16,
+  "type": "response.refusal.delta"
+}

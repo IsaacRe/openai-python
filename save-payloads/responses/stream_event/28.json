@@ -1,0 +1,11 @@
+{
+  "content_index": 16,
+  "item_id": "string",
+  "output_index": 16,
+  "part": {
+    "refusal": "string",
+    "type": "refusal"
+  },
+  "sequence_number": 16,
+  "type": "response.content_part.added"
+}

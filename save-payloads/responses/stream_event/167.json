@@ -1,0 +1,8 @@
+{
+  "content_index": 16,
+  "item_id": "string",
+  "output_index": 16,
+  "refusal": "string",
+  "sequence_number": 16,
+  "type": "response.refusal.done"
+}

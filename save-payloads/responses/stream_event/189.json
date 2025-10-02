@@ -1,0 +1,72 @@
+{
+  "response": {
+    "id": "_abc123",
+    "created_at": 1.0,
+    "error": {
+      "code": "empty_image_file",
+      "message": "string"
+    },
+    "incomplete_details": null,
+    "instructions": [
+      {
+        "content": [
+          {
+            "type": "input_file",
+            "file_data": null,
+            "file_id": null,
+            "file_url": null,
+            "filename": null
+          }
+        ],
+        "role": "developer",
+        "status": null,
+        "type": null
+      }
+    ],
+    "metadata": null,
+    "model": "string",
+    "object": "response",
+    "output": [
+      {
+        "call_id": "string",
+        "input": "string",
+        "name": "string",
+        "type": "custom_tool_call",
+        "id": null
+      }
+    ],
+    "parallel_tool_calls": false,
+    "temperature": null,
+    "tool_choice": {
+      "name": "string",
+      "type": "custom"
+    },
+    "tools": [
+      {
+        "name": "string",
+        "type": "custom",
+        "description": null,
+        "format": null
+      }
+    ],
+    "top_p": null,
+    "background": null,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": null,
+    "safety_identifier": null,
+    "service_tier": null,
+    "status": null,
+    "text": null,
+    "top_logprobs": null,
+    "truncation": null,
+    "usage": null,
+    "user": null
+  },
+  "sequence_number": 16,
+  "type": "response.queued"
+}
